@@ -31,8 +31,6 @@
 
 // std
 #include <array>
-#include <chrono>
-#include <thread>
 
 #include "include/gate.hpp"
 #include "include/cpu/circuit.hpp"
@@ -56,7 +54,7 @@ int main(int argc, char* argv[])
     bool clock;
     std::array<bool, 4> db;
 
-    while(true)
+    while(1)
     {
         data = {false};
         out_data = false;
@@ -77,8 +75,6 @@ int main(int argc, char* argv[])
         db = bus.buffer4({circuit.ALU(reg1, reg2, sub)[0], circuit.ALU(reg1, reg2, sub)[1], circuit.ALU(reg1, reg2, sub)[1], circuit.ALU(reg1, reg2, sub)[3]}, out_alu);
 
         db = bus.buffer4(reg2, out_reg[1]);
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
 
     return 0;
